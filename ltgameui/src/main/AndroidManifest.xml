@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.gentop.ltgame.ltgameui">
+
+    <application>
+        <activity
+            android:name=".widget.activity.LoginActivity"
+            android:theme="@style/CustomTheme_Dialog" />
+    </application>
+
+</manifest>
