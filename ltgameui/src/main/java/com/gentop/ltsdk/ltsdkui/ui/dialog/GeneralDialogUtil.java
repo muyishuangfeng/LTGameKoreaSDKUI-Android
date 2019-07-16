@@ -1,4 +1,4 @@
-package com.gentop.ltgame.ltgameui.ui.dialog;
+package com.gentop.ltsdk.ltsdkui.ui.dialog;
 
 import android.content.Context;
 

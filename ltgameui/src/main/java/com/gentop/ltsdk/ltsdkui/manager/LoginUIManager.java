@@ -1,4 +1,4 @@
-package com.gentop.ltgame.ltgameui.manager;
+package com.gentop.ltsdk.ltsdkui.manager;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,18 +6,18 @@ import android.os.Bundle;
 import android.text.TextUtils;
 
 
-import com.gentop.ltgame.ltgamecommon.constant.Constants;
-import com.gentop.ltgame.ltgamecommon.impl.OnAutoLoginCheckListener;
-import com.gentop.ltgame.ltgamecommon.manager.LoginResultManager;
-import com.gentop.ltgame.ltgamecommon.model.BaseEntry;
-import com.gentop.ltgame.ltgamecommon.model.ResultData;
-import com.gentop.ltgame.ltgamecommon.util.PreferencesUtils;
-import com.gentop.ltgame.ltgamegoogle.GoogleLoginManager;
-import com.gentop.ltgame.ltgamegoogle.OnGoogleSignOutListener;
-import com.gentop.ltgame.ltgameui.impl.OnReLoginInListener;
-import com.gentop.ltgame.ltgameui.impl.OnResultClickListener;
-import com.gentop.ltgame.ltgameui.ui.dialog.GeneralDialogUtil;
-import com.gentop.ltgame.ltgameui.widget.activity.LoginActivity;
+import com.gentop.ltgamesdk.google.GoogleLoginManager;
+import com.gentop.ltgamesdk.google.OnGoogleSignOutListener;
+import com.gentop.ltsdk.common.constant.Constants;
+import com.gentop.ltsdk.common.impl.OnAutoLoginCheckListener;
+import com.gentop.ltsdk.common.manager.LoginResultManager;
+import com.gentop.ltsdk.common.model.BaseEntry;
+import com.gentop.ltsdk.common.model.ResultData;
+import com.gentop.ltsdk.common.util.PreferencesUtils;
+import com.gentop.ltsdk.ltsdkui.impl.OnReLoginInListener;
+import com.gentop.ltsdk.ltsdkui.impl.OnResultClickListener;
+import com.gentop.ltsdk.ltsdkui.ui.dialog.GeneralDialogUtil;
+import com.gentop.ltsdk.ltsdkui.widget.activity.LoginActivity;
 
 import java.util.Map;
 import java.util.WeakHashMap;

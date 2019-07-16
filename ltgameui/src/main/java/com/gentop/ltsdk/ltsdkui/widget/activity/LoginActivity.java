@@ -1,19 +1,19 @@
-package com.gentop.ltgame.ltgameui.widget.activity;
+package com.gentop.ltsdk.ltsdkui.widget.activity;
 
 
 import android.os.Bundle;
 import android.text.TextUtils;
 
-import com.gentop.ltgame.ltgamecommon.constant.Constants;
-import com.gentop.ltgame.ltgamecommon.model.ResultData;
-import com.gentop.ltgame.ltgamecommon.util.PreferencesUtils;
 import com.gentop.ltgame.ltgameui.R;
-import com.gentop.ltgame.ltgameui.base.BaseAppActivity;
-import com.gentop.ltgame.ltgameui.impl.OnResultClickListener;
-import com.gentop.ltgame.ltgameui.manager.LoginUIManager;
-import com.gentop.ltgame.ltgameui.model.BundleData;
-import com.gentop.ltgame.ltgameui.widget.fragment.AgreementFragment;
-import com.gentop.ltgame.ltgameui.widget.fragment.LoginFragment;
+import com.gentop.ltsdk.common.constant.Constants;
+import com.gentop.ltsdk.common.model.ResultData;
+import com.gentop.ltsdk.common.util.PreferencesUtils;
+import com.gentop.ltsdk.ltsdkui.base.BaseAppActivity;
+import com.gentop.ltsdk.ltsdkui.impl.OnResultClickListener;
+import com.gentop.ltsdk.ltsdkui.manager.LoginUIManager;
+import com.gentop.ltsdk.ltsdkui.model.BundleData;
+import com.gentop.ltsdk.ltsdkui.widget.fragment.AgreementFragment;
+import com.gentop.ltsdk.ltsdkui.widget.fragment.LoginFragment;
 
 
 public class LoginActivity extends BaseAppActivity {

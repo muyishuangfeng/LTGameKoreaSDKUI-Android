@@ -1,4 +1,4 @@
-package com.gentop.ltgame.ltgameui.base;
+package com.gentop.ltsdk.ltsdkui.base;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-import com.gentop.ltgame.ltgameui.ui.FadeInAnimator;
+import com.gentop.ltsdk.ltsdkui.ui.FadeInAnimator;
 
 import me.yokeyword.fragmentation.SupportFragment;
 import me.yokeyword.fragmentation.anim.FragmentAnimator;

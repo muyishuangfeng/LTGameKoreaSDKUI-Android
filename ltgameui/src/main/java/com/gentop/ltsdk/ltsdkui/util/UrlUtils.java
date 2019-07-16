@@ -1,4 +1,4 @@
-package com.gentop.ltgame.ltgameui.util;
+package com.gentop.ltsdk.ltsdkui.util;
 
 import android.app.Activity;
 import android.content.Intent;

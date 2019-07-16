@@ -1,4 +1,4 @@
-package com.gentop.ltgame.ltgameui.widget.fragment;
+package com.gentop.ltsdk.ltsdkui.widget.fragment;
 
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatCheckBox;
@@ -8,12 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 
-import com.gentop.ltgame.ltgamecommon.constant.Constants;
-import com.gentop.ltgame.ltgamecommon.util.PreferencesUtils;
 import com.gentop.ltgame.ltgameui.R;
-import com.gentop.ltgame.ltgameui.base.BaseFragment;
-import com.gentop.ltgame.ltgameui.model.BundleData;
-import com.gentop.ltgame.ltgameui.util.UrlUtils;
+import com.gentop.ltsdk.common.constant.Constants;
+import com.gentop.ltsdk.common.util.PreferencesUtils;
+import com.gentop.ltsdk.ltsdkui.base.BaseFragment;
+import com.gentop.ltsdk.ltsdkui.model.BundleData;
+import com.gentop.ltsdk.ltsdkui.util.UrlUtils;
 
 
 public class AgreementFragment extends BaseFragment implements View.OnClickListener,

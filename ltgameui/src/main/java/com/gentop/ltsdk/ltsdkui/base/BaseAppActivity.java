@@ -1,4 +1,4 @@
-package com.gentop.ltgame.ltgameui.base;
+package com.gentop.ltsdk.ltsdkui.base;
 
 import android.view.View;
 

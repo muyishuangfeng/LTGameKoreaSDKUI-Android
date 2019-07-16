@@ -1,4 +1,4 @@
-package com.gentop.ltgame.ltgameui.ui;
+package com.gentop.ltsdk.ltsdkui.ui;
 
 import android.os.Parcel;
 import android.os.Parcelable;

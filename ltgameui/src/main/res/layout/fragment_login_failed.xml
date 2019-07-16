@@ -59,7 +59,7 @@
             android:textSize="@dimen/sp_12" />
     </LinearLayout>
 
-    <com.gentop.ltgame.ltgameui.ui.ProgressView
+    <com.gentop.ltsdk.ltsdkui.ui.ProgressView
         android:id="@+id/pgb_loading"
         android:layout_width="@dimen/dp_60"
         android:layout_height="@dimen/dp_60"

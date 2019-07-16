@@ -1,4 +1,4 @@
-package com.gentop.ltgame.ltgameui.widget.fragment;
+package com.gentop.ltsdk.ltsdkui.widget.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,20 +7,17 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
-import com.facebook.AccessToken;
-import com.facebook.FacebookAuthorizationException;
-import com.facebook.login.LoginManager;
-import com.gentop.ltgame.ltgamecommon.constant.Constants;
-import com.gentop.ltgame.ltgamecommon.impl.OnLoginSuccessListener;
-import com.gentop.ltgame.ltgamecommon.model.BaseEntry;
-import com.gentop.ltgame.ltgamecommon.model.ResultData;
-import com.gentop.ltgame.ltgamecommon.util.PreferencesUtils;
-import com.gentop.ltgame.ltgamefacebook.FacebookLoginManager;
-import com.gentop.ltgame.ltgamegoogle.GoogleLoginManager;
 import com.gentop.ltgame.ltgameui.R;
-import com.gentop.ltgame.ltgameui.base.BaseFragment;
-import com.gentop.ltgame.ltgameui.impl.OnResultClickListener;
-import com.gentop.ltgame.ltgameui.model.BundleData;
+import com.gentop.ltgamesdk.google.GoogleLoginManager;
+import com.gentop.ltsdk.common.constant.Constants;
+import com.gentop.ltsdk.common.impl.OnLoginSuccessListener;
+import com.gentop.ltsdk.common.model.BaseEntry;
+import com.gentop.ltsdk.common.model.ResultData;
+import com.gentop.ltsdk.common.util.PreferencesUtils;
+import com.gentop.ltsdk.facebook.FacebookLoginManager;
+import com.gentop.ltsdk.ltsdkui.base.BaseFragment;
+import com.gentop.ltsdk.ltsdkui.impl.OnResultClickListener;
+import com.gentop.ltsdk.ltsdkui.model.BundleData;
 
 
 public class LoginFragment extends BaseFragment implements View.OnClickListener {

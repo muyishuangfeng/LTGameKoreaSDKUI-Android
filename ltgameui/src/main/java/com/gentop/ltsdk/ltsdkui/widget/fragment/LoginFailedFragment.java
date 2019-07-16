@@ -1,4 +1,4 @@
-package com.gentop.ltgame.ltgameui.widget.fragment;
+package com.gentop.ltsdk.ltsdkui.widget.fragment;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -6,9 +6,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.gentop.ltgame.ltgameui.R;
-import com.gentop.ltgame.ltgameui.base.BaseFragment;
-import com.gentop.ltgame.ltgameui.model.BundleData;
-import com.gentop.ltgame.ltgameui.ui.ProgressView;
+import com.gentop.ltsdk.ltsdkui.base.BaseFragment;
+import com.gentop.ltsdk.ltsdkui.model.BundleData;
+import com.gentop.ltsdk.ltsdkui.ui.ProgressView;
 
 
 public class LoginFailedFragment extends BaseFragment {

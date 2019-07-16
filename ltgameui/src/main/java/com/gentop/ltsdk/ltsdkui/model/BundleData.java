@@ -1,4 +1,4 @@
-package com.gentop.ltgame.ltgameui.model;
+package com.gentop.ltsdk.ltsdkui.model;
 
 import java.io.Serializable;
 

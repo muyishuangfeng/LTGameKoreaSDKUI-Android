@@ -3,7 +3,7 @@
 
     <application>
         <activity
-            android:name=".widget.activity.LoginActivity"
+            android:name="com.gentop.ltsdk.ltsdkui.widget.activity.LoginActivity"
             android:theme="@style/CustomTheme_Dialog" />
     </application>
 
