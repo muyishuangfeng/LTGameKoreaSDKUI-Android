@@ -3,7 +3,7 @@
     android:shape="rectangle">
 
 
-
+    <corners android:radius="@dimen/dp_22" />
 
 
     <!-- 矩形的内部颜色，这里设置成白色 -->

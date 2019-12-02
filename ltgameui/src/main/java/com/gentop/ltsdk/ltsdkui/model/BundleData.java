@@ -7,13 +7,13 @@ public class BundleData implements Serializable {
     private String privacyUrl;
     private String agreementUrl;
     private String googleClientID;
-    private String baseURL;
     private String LTAppID;
     private String LTAppKey;
     private String mAdID;
     private String mPackageID;
     private String mFacebookID;
     private boolean mLoginOut;
+    private boolean mServerTest;
 
     public String getPrivacyUrl() {
         return privacyUrl;
@@ -39,13 +39,6 @@ public class BundleData implements Serializable {
         this.googleClientID = googleClientID;
     }
 
-    public String getBaseURL() {
-        return baseURL;
-    }
-
-    public void setBaseURL(String baseURL) {
-        this.baseURL = baseURL;
-    }
 
     public String getLTAppID() {
         return LTAppID;
@@ -93,5 +86,13 @@ public class BundleData implements Serializable {
 
     public void setmLoginOut(boolean mLoginOut) {
         this.mLoginOut = mLoginOut;
+    }
+
+    public boolean getServerTest() {
+        return mServerTest;
+    }
+
+    public void setServerTest(boolean mServerTest) {
+        this.mServerTest = mServerTest;
     }
 }

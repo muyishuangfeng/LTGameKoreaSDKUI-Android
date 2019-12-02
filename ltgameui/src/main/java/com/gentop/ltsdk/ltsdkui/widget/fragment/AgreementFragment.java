@@ -2,11 +2,11 @@ package com.gentop.ltsdk.ltsdkui.widget.fragment;
 
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatCheckBox;
-import android.support.v7.widget.AppCompatImageView;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.TextView;
 
 import com.gentop.ltgame.ltgameui.R;
 import com.gentop.ltsdk.common.constant.Constants;
@@ -19,7 +19,7 @@ import com.gentop.ltsdk.ltsdkui.util.UrlUtils;
 public class AgreementFragment extends BaseFragment implements View.OnClickListener,
         CompoundButton.OnCheckedChangeListener {
 
-    AppCompatImageView mImgAgreement,mImgPrivacy;
+    TextView mTxtAgreement,mTxtPrivacy;
     Button mBtnInto;
     AppCompatCheckBox mCkbAgreement, mCkbPrivacy;
     boolean isAgreement = false;
@@ -31,9 +31,9 @@ public class AgreementFragment extends BaseFragment implements View.OnClickListe
     String LTAppKey;
     String mAdID;
     String mPackageID;
-    String mBaseUrl;
     String mFacebookID;
     boolean mIsLoginOut;
+    boolean mServerTest;
 
 
     public static AgreementFragment newInstance(BundleData data) {
@@ -53,11 +53,11 @@ public class AgreementFragment extends BaseFragment implements View.OnClickListe
     protected void initView(View view) {
         isAgreement = false;
         isPrivacy = false;
-        mImgAgreement = view.findViewById(R.id.img_agreement);
-        mImgAgreement.setOnClickListener(this);
+        mTxtAgreement = view.findViewById(R.id.txt_agreement);
+        mTxtAgreement.setOnClickListener(this);
 
-        mImgPrivacy = view.findViewById(R.id.img_privacy);
-        mImgPrivacy.setOnClickListener(this);
+        mTxtPrivacy = view.findViewById(R.id.txt_privacy);
+        mTxtPrivacy.setOnClickListener(this);
 
         mCkbAgreement = view.findViewById(R.id.ckb_agreement);
         mCkbAgreement.setOnCheckedChangeListener(this);
@@ -84,7 +84,7 @@ public class AgreementFragment extends BaseFragment implements View.OnClickListe
                 mAdID = mData.getmAdID();
                 mPackageID = mData.getmPackageID();
                 mFacebookID = mData.getmFacebookID();
-                mBaseUrl = mData.getBaseURL();
+                mServerTest = mData.getServerTest();
                 mIsLoginOut = mData.ismLoginOut();
             }
         }
@@ -101,11 +101,11 @@ public class AgreementFragment extends BaseFragment implements View.OnClickListe
                 }
 
             }
-        } else if (view.getId() == R.id.img_privacy) {
+        } else if (view.getId() == R.id.txt_privacy) {
             if (!TextUtils.isEmpty(mPrivacyUrl)) {
                 UrlUtils.getInstance().loadUrl(mActivity, mPrivacyUrl);
             }
-        } else if (view.getId() == R.id.img_agreement) {
+        } else if (view.getId() == R.id.txt_agreement) {
             if (!TextUtils.isEmpty(mAgreementUrl)) {
                 UrlUtils.getInstance().loadUrl(mActivity, mAgreementUrl);
             }
@@ -148,7 +148,7 @@ public class AgreementFragment extends BaseFragment implements View.OnClickListe
             data.setGoogleClientID(googleClientID);
             data.setmAdID(mAdID);
             data.setmPackageID(mPackageID);
-            data.setBaseURL(mBaseUrl);
+            data.setServerTest(mServerTest);
             data.setmFacebookID(mFacebookID);
             data.setmLoginOut(mIsLoginOut);
             getProxyActivity().addFragment(LoginFragment.newInstance(data),

@@ -58,21 +58,21 @@ public class LoginUIManager {
      * @param LTAppKey       乐推AppKey
      * @param mListener      登录接口
      */
-    public void loginIn(final Activity activity, final String url, final String mFacebookID,
+    public void loginIn(final Activity activity, final boolean mServerTest, final String mFacebookID,
                         final String mAgreementUrl, final String mPrivacyUrl, final String googleClientID,
                         final String LTAppID, final String LTAppKey, final String adID,
                         final String packageID, final boolean mIsLoginOut,
                         final OnResultClickListener listener,
                         final OnReLoginInListener mListener) {
         if (isLoginStatus(activity)) {
-            login(activity, url, mFacebookID, mAgreementUrl, mPrivacyUrl, googleClientID, LTAppID,
+            login(activity, mServerTest, mFacebookID, mAgreementUrl, mPrivacyUrl, googleClientID, LTAppID,
                     LTAppKey, adID, packageID, mIsLoginOut, listener);
         } else {
             Map<String, Object> params = new WeakHashMap<>();
             params.put("lt_uid", PreferencesUtils.getString(activity, Constants.USER_LT_UID));
             params.put("lt_uid_token", PreferencesUtils.getString(activity, Constants.USER_LT_UID_TOKEN));
             params.put("platform_id", packageID);
-            LoginResultManager.autoLoginCheck(url, LTAppID, LTAppKey, params, new OnAutoLoginCheckListener() {
+            LoginResultManager.autoLoginCheck(mServerTest, LTAppID, LTAppKey, params, new OnAutoLoginCheckListener() {
                 @Override
                 public void onCheckSuccess(BaseEntry result) {
                     if (result != null) {
@@ -88,7 +88,7 @@ public class LoginUIManager {
                         } else if (result.getCode() == 503) {
                             GeneralDialogUtil.showActionDialog(activity, 503);
                         } else if (result.getCode() == 400) {
-                            loginOut(activity, url, mFacebookID, mAgreementUrl, mPrivacyUrl,
+                            loginOut(activity, mServerTest, mFacebookID, mAgreementUrl, mPrivacyUrl,
                                     googleClientID, LTAppID, LTAppKey, adID, packageID, mIsLoginOut,
                                     listener);
                         }
@@ -116,7 +116,7 @@ public class LoginUIManager {
      * @param LTAppID        乐推AppID
      * @param LTAppKey       乐推AppKey
      */
-    public void loginOut(final Activity activity, final String baseUrl, final String mFacebookID,
+    public void loginOut(final Activity activity, final boolean mServerTest, final String mFacebookID,
                          final String mAgreementUrl, final String mPrivacyUrl, final String googleClientID,
                          final String LTAppID, final String LTAppKey, final String adID,
                          final String mPackageID, final boolean mIsLoginOut, final OnResultClickListener listener) {
@@ -129,7 +129,7 @@ public class LoginUIManager {
                         Constants.USER_LT_UID)) &&
                         TextUtils.isEmpty(PreferencesUtils.getString(activity,
                                 Constants.USER_LT_UID_TOKEN))) {
-                    login(activity, baseUrl, mFacebookID, mAgreementUrl, mPrivacyUrl,
+                    login(activity, mServerTest, mFacebookID, mAgreementUrl, mPrivacyUrl,
                             googleClientID, LTAppID, LTAppKey, adID, mPackageID, mIsLoginOut, listener);
                 }
             }
@@ -156,13 +156,13 @@ public class LoginUIManager {
      * @param LTAppID        乐推AppID
      * @param LTAppKey       乐推AppKey
      */
-    private void login(Activity activity, String baseUrl, String mFacebookID, String mAgreementUrl,
+    private void login(Activity activity, boolean mServerTest, String mFacebookID, String mAgreementUrl,
                        String mPrivacyUrl, String googleClientID, String LTAppID, String LTAppKey,
                        String adID, String mPackageID, boolean mIsLoginOut, OnResultClickListener listener) {
         this.mListener = listener;
         Intent intent = new Intent(activity, LoginActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putString("baseUrl", baseUrl);
+        bundle.putBoolean("mServerTest", mServerTest);
         bundle.putString("mFacebookID", mFacebookID);
         bundle.putString("mAgreementUrl", mAgreementUrl);
         bundle.putString("mPrivacyUrl", mPrivacyUrl);

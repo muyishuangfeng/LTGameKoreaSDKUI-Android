@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/dp_318"
+    android:layout_height="@dimen/dp_168"
+    android:layout_gravity="center"
+    android:gravity="center">
+
+
+    <RelativeLayout
+        android:id="@+id/ryt_guest_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_guest_turn_title"
+        android:layout_marginStart="@dimen/dp_44"
+        android:layout_marginTop="@dimen/dp_24"
+        android:layout_marginEnd="@dimen/dp_44"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_guest_turn_switch"
+            android:layout_width="@dimen/dp_96"
+            android:layout_height="@dimen/dp_28"
+            android:layout_centerVertical="true"
+            android:background="@drawable/btn_light_blue_corner"
+            android:text="@string/text_guest_switch"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/sp_10" />
+
+        <Button
+            android:id="@+id/btn_guest_turn_bind"
+            android:layout_width="@dimen/dp_96"
+            android:layout_height="@dimen/dp_28"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_35"
+            android:layout_toRightOf="@+id/btn_guest_turn_switch"
+            android:background="@drawable/btn_light_blue_corner"
+            android:text="@string/text_guest_bind"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/sp_10" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/txt_guest_turn_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_30"
+        android:gravity="center"
+        android:text="@string/text_turn_title"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/sp_12"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txt_guest_turn_continue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ryt_guest_bottom"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_18"
+        android:gravity="center"
+        android:text="@string/text_login_continue"
+        android:textColor="@color/colorGray"
+        android:textSize="@dimen/sp_10" />
+
+
+</RelativeLayout>

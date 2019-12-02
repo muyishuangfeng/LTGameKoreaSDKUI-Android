@@ -8,6 +8,6 @@
 
     <!-- 矩形的内部颜色，这里设置成白色 -->
     <gradient
-        android:endColor="@color/colorSure"
-        android:startColor="@color/colorSure" />
+        android:endColor="@color/colorLightBlue"
+        android:startColor="@color/colorLightBlue" />
 </shape>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="@dimen/dp_360"
-    android:layout_height="@dimen/dp_200"
+    android:layout_width="@dimen/dp_318"
+    android:layout_height="@dimen/dp_168"
     android:layout_gravity="center"
     android:background="@color/colorWhite"
     android:orientation="vertical">
@@ -12,30 +12,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_16"
         android:gravity="center"
         android:text="@string/text_login"
         android:textStyle="bold"
         android:textColor="@color/colorBlack"
-        android:textSize="@dimen/sp_22" />
+        android:textSize="@dimen/sp_18" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_9"
         android:gravity="center"
         android:text="@string/text_login_way"
         android:textColor="@color/colorGray"
-        android:textSize="@dimen/sp_12" />
+        android:textSize="@dimen/sp_10" />
 
     <LinearLayout
         android:id="@+id/lyt_login_failed"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/dp_44"
+        android:layout_height="@dimen/dp_35"
         android:layout_gravity="center"
-        android:layout_marginBottom="@dimen/dp_10"
-        android:layout_marginTop="@dimen/dp_30"
+        android:layout_marginBottom="@dimen/dp_38"
+        android:layout_marginTop="@dimen/dp_31"
         android:background="@drawable/layout_white_corner"
         android:gravity="center"
         android:orientation="horizontal">

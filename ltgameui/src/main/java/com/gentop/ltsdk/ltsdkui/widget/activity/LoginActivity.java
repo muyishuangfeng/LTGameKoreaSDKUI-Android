@@ -37,7 +37,7 @@ public class LoginActivity extends BaseAppActivity {
         String LTAppKey = bundle.getString("LTAppKey");
         String mAdID = bundle.getString("adID");
         String mPackageID = bundle.getString("mPackageID");
-        String mBaseUrl = bundle.getString("baseUrl");
+        boolean mServerTest = bundle.getBoolean("mServerTest");
         String mFacebookID = bundle.getString("mFacebookID");
         final boolean mIsLoginOut = bundle.getBoolean("mIsLoginOut");
 
@@ -49,7 +49,7 @@ public class LoginActivity extends BaseAppActivity {
         data.setLTAppKey(LTAppKey);
         data.setmAdID(mAdID);
         data.setmPackageID(mPackageID);
-        data.setBaseURL(mBaseUrl);
+        data.setServerTest(mServerTest);
         data.setmFacebookID(mFacebookID);
         data.setmLoginOut(mIsLoginOut);
 

@@ -1,1 +1,1 @@
-include ':app', ':ltgameui'
+include  ':ltgameui'

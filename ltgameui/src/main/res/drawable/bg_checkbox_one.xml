@@ -3,5 +3,5 @@
     <item android:drawable="@drawable/ic_selected" android:state_checked="true"  />
     <item android:drawable="@drawable/ic_selected" android:state_selected="true" />
     <item android:drawable="@drawable/ic_selected" android:state_pressed="true" />
-    <item android:drawable="@drawable/ckb_corner" android:state_checked="false" />
+    <item android:drawable="@drawable/ic_unselect" android:state_checked="false" />
 </selector>
