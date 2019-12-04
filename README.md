@@ -1,5 +1,9 @@
 # LTGameKoreaSDKUI-Android
 
+[![](https://jitpack.io/v/muyishuangfeng/LTGameKoreaSDKUI-Android.svg)](https://jitpack.io/#muyishuangfeng/LTGameKoreaSDKUI-Android)
+
+
+
 
     1 、Add the token to $HOME/.gradle/gradle.properties
 
