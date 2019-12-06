@@ -114,7 +114,7 @@ public class BindFragment extends BaseFragment implements View.OnClickListener {
         FacebookLoginManager.onActivityResult(requestCode, resultCode, data);
         if (!TextUtils.isEmpty(LTAppID) &&
                 !TextUtils.isEmpty(LTAppKey) && !TextUtils.isEmpty(mAdID)) {
-            GoogleLoginManager.onActivityResult( requestCode, data, REQUEST_CODE,
+            GoogleLoginManager.onActivityResult(requestCode, data, REQUEST_CODE,
                     new OnGoogleTokenListener() {
                         @Override
                         public void onSuccess(String token) {
@@ -138,7 +138,7 @@ public class BindFragment extends BaseFragment implements View.OnClickListener {
                                                 PreferencesUtils.putString(mActivity, Constants.USER_LT_UID_TOKEN, result.getData().getLt_uid_token());
                                                 getProxyActivity().finish();
                                             }
-                                        }else {
+                                        } else {
                                             getProxyActivity().finish();
                                         }
                                     }
@@ -146,7 +146,7 @@ public class BindFragment extends BaseFragment implements View.OnClickListener {
 
                                 @Override
                                 public void onFailed(String code) {
-
+                                    loginFailed();
                                 }
 
                                 @Override
@@ -231,41 +231,41 @@ public class BindFragment extends BaseFragment implements View.OnClickListener {
                         public void onSuccess(String result) {
                             GuestManager.bindAccount(mActivity, mServerTest, LTAppID, LTAppKey, mAdID, mPackageID,
                                     "facebook", result, new OnLoginSuccessListener() {
-                                @Override
-                                public void onSuccess(BaseEntry<ResultData> result) {
-                                    if (result != null) {
-                                        if (result.getCode() == 200) {
-                                            if (result.getData().getApi_token() != null &&
-                                                    result.getData().getLt_uid() != null) {
-                                                ResultData mData = new ResultData();
-                                                mData.setLt_uid(result.getData().getLt_uid());
-                                                mData.setApi_token(result.getData().getApi_token());
-                                                mData.setLt_uid_token(result.getData().getLt_uid_token());
-                                                if (mListener != null) {
-                                                    mListener.onResult(mData);
+                                        @Override
+                                        public void onSuccess(BaseEntry<ResultData> result) {
+                                            if (result != null) {
+                                                if (result.getCode() == 200) {
+                                                    if (result.getData().getApi_token() != null &&
+                                                            result.getData().getLt_uid() != null) {
+                                                        ResultData mData = new ResultData();
+                                                        mData.setLt_uid(result.getData().getLt_uid());
+                                                        mData.setApi_token(result.getData().getApi_token());
+                                                        mData.setLt_uid_token(result.getData().getLt_uid_token());
+                                                        if (mListener != null) {
+                                                            mListener.onResult(mData);
+                                                        }
+                                                        PreferencesUtils.putString(mActivity, Constants.USER_BIND_FLAG, "2");
+                                                        PreferencesUtils.putString(mActivity, Constants.USER_API_TOKEN, result.getData().getApi_token());
+                                                        PreferencesUtils.putString(mActivity, Constants.USER_LT_UID, result.getData().getLt_uid());
+                                                        PreferencesUtils.putString(mActivity, Constants.USER_LT_UID_TOKEN, result.getData().getLt_uid_token());
+                                                        getProxyActivity().finish();
+                                                    }
+                                                } else {
+                                                    getProxyActivity().finish();
                                                 }
-                                                PreferencesUtils.putString(mActivity, Constants.USER_BIND_FLAG, "2");
-                                                PreferencesUtils.putString(mActivity, Constants.USER_API_TOKEN, result.getData().getApi_token());
-                                                PreferencesUtils.putString(mActivity, Constants.USER_LT_UID, result.getData().getLt_uid());
-                                                PreferencesUtils.putString(mActivity, Constants.USER_LT_UID_TOKEN, result.getData().getLt_uid_token());
-                                                getProxyActivity().finish();
                                             }
-                                        }else {
-                                            getProxyActivity().finish();
                                         }
-                                    }
-                                }
 
-                                @Override
-                                public void onFailed(String code) {
+                                        @Override
+                                        public void onFailed(String code) {
 
-                                }
+                                        }
 
-                                @Override
-                                public void onParameterError(String result) {
+                                        @Override
+                                        public void onParameterError(String result) {
 
-                                }
-                            });
+                                        }
+                                    });
                         }
 
                         @Override
