@@ -16,6 +16,7 @@ import com.gentop.ltsdk.ltsdkui.base.BaseFragment;
 import com.gentop.ltsdk.ltsdkui.impl.OnResultClickListener;
 import com.gentop.ltsdk.ltsdkui.manager.LoginUIManager;
 import com.gentop.ltsdk.ltsdkui.model.BundleData;
+import com.gentop.ltsdk.ltsdkui.util.ConstantModel;
 
 public class GuestTurnFragment extends BaseFragment implements View.OnClickListener {
 
@@ -100,9 +101,11 @@ public class GuestTurnFragment extends BaseFragment implements View.OnClickListe
                             mData.setLt_uid(result.getData().getLt_uid());
                             mData.setLt_uid_token(result.getData().getLt_uid_token());
                             mData.setApi_token(result.getData().getApi_token());
+                            mData.setLoginType("Guest Login");
                             if (mListener != null) {
                                 mListener.onResult(mData);
                             }
+                            PreferencesUtils.putString(mActivity, ConstantModel.MSG_LOGIN_TYPE, "Guest Login");
                             PreferencesUtils.putString(mActivity, Constants.USER_GUEST_FLAG, "2");
                             PreferencesUtils.putString(mActivity, Constants.USER_API_TOKEN, result.getData().getApi_token());
                             PreferencesUtils.putString(mActivity, Constants.USER_LT_UID, result.getData().getLt_uid());

@@ -17,6 +17,7 @@ import com.gentop.ltsdk.common.util.PreferencesUtils;
 import com.gentop.ltsdk.ltsdkui.impl.OnReLoginInListener;
 import com.gentop.ltsdk.ltsdkui.impl.OnResultClickListener;
 import com.gentop.ltsdk.ltsdkui.ui.dialog.GeneralDialogUtil;
+import com.gentop.ltsdk.ltsdkui.util.ConstantModel;
 import com.gentop.ltsdk.ltsdkui.widget.activity.LoginActivity;
 
 import java.util.Map;
@@ -80,6 +81,7 @@ public class LoginUIManager {
                             ResultData resultData = new ResultData();
                             resultData.setLt_uid(PreferencesUtils.getString(activity, Constants.USER_LT_UID));
                             resultData.setLt_uid_token(PreferencesUtils.getString(activity, Constants.USER_LT_UID_TOKEN));
+                            resultData.setLoginType(PreferencesUtils.getString(activity, ConstantModel.MSG_LOGIN_TYPE));
                             mListener.OnLoginResult(resultData);
                         } else if (result.getCode() == 501) {
                             GeneralDialogUtil.showActionDialog(activity, 501);

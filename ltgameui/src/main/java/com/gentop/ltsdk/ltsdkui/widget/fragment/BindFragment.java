@@ -23,6 +23,7 @@ import com.gentop.ltsdk.ltsdkui.base.BaseFragment;
 import com.gentop.ltsdk.ltsdkui.impl.OnResultClickListener;
 import com.gentop.ltsdk.ltsdkui.manager.LoginUIManager;
 import com.gentop.ltsdk.ltsdkui.model.BundleData;
+import com.gentop.ltsdk.ltsdkui.util.ConstantModel;
 
 
 public class BindFragment extends BaseFragment implements View.OnClickListener {
@@ -129,9 +130,11 @@ public class BindFragment extends BaseFragment implements View.OnClickListener {
                                                 mData.setLt_uid(result.getData().getLt_uid());
                                                 mData.setLt_uid_token(result.getData().getLt_uid_token());
                                                 mData.setApi_token(result.getData().getApi_token());
+                                                mData.setLoginType("Google Login");
                                                 if (mListener != null) {
                                                     mListener.onResult(mData);
                                                 }
+                                                PreferencesUtils.putString(mActivity, ConstantModel.MSG_LOGIN_TYPE, "Google Login");
                                                 PreferencesUtils.putString(mActivity, Constants.USER_BIND_FLAG, "2");
                                                 PreferencesUtils.putString(mActivity, Constants.USER_API_TOKEN, result.getData().getApi_token());
                                                 PreferencesUtils.putString(mActivity, Constants.USER_LT_UID, result.getData().getLt_uid());
@@ -241,9 +244,11 @@ public class BindFragment extends BaseFragment implements View.OnClickListener {
                                                         mData.setLt_uid(result.getData().getLt_uid());
                                                         mData.setApi_token(result.getData().getApi_token());
                                                         mData.setLt_uid_token(result.getData().getLt_uid_token());
+                                                        mData.setLoginType("Facebook Login");
                                                         if (mListener != null) {
                                                             mListener.onResult(mData);
                                                         }
+                                                        PreferencesUtils.putString(mActivity, ConstantModel.MSG_LOGIN_TYPE, "Facebook Login");
                                                         PreferencesUtils.putString(mActivity, Constants.USER_BIND_FLAG, "2");
                                                         PreferencesUtils.putString(mActivity, Constants.USER_API_TOKEN, result.getData().getApi_token());
                                                         PreferencesUtils.putString(mActivity, Constants.USER_LT_UID, result.getData().getLt_uid());
