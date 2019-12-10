@@ -135,13 +135,11 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                                         mData.setLt_uid_token(result.getData().getLt_uid_token());
                                         mData.setApi_token(result.getData().getApi_token());
                                         mData.setLoginType("Google Login");
-                                        if (mListener != null) {
-                                            mListener.onResult(mData);
-                                        }
                                         PreferencesUtils.putString(mActivity, ConstantModel.MSG_LOGIN_TYPE, "Google Login");
                                         PreferencesUtils.putString(mActivity, Constants.USER_API_TOKEN, result.getData().getApi_token());
                                         PreferencesUtils.putString(mActivity, Constants.USER_LT_UID, result.getData().getLt_uid());
                                         PreferencesUtils.putString(mActivity, Constants.USER_LT_UID_TOKEN, result.getData().getLt_uid_token());
+                                        LoginUIManager.getInstance().setResult(mData);
                                         getProxyActivity().finish();
                                     }
                                 }
@@ -266,13 +264,11 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                                         mData.setApi_token(result.getData().getApi_token());
                                         mData.setLt_uid_token(result.getData().getLt_uid_token());
                                         mData.setLoginType("Facebook Login");
-                                        if (mListener != null) {
-                                            mListener.onResult(mData);
-                                        }
                                         PreferencesUtils.putString(mActivity, ConstantModel.MSG_LOGIN_TYPE, "Facebook Login");
                                         PreferencesUtils.putString(mActivity, Constants.USER_API_TOKEN, result.getData().getApi_token());
                                         PreferencesUtils.putString(mActivity, Constants.USER_LT_UID, result.getData().getLt_uid());
                                         PreferencesUtils.putString(mActivity, Constants.USER_LT_UID_TOKEN, result.getData().getLt_uid_token());
+                                        LoginUIManager.getInstance().setResult(mData);
                                         getProxyActivity().finish();
                                     }
 
