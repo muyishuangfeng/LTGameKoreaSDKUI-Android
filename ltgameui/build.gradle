@@ -31,6 +31,8 @@ dependencies {
     implementation 'com.github.muyishuangfeng:LTGameSDKUIFB:1.1.0'
     implementation 'com.github.muyishuangfeng:LTGameSDKUIGoogle:1.0.9'
     implementation 'com.github.muyishuangfeng:LTGameSDKUIGuest:1.0.9'
+    //屏幕适配
+    implementation 'me.jessyan:autosize:1.1.2'
 
 }
 

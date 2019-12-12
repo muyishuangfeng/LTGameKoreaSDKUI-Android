@@ -11,6 +11,7 @@ import android.view.Window;
 
 import java.util.List;
 
+import me.jessyan.autosize.AutoSize;
 import me.yokeyword.fragmentation_swipeback.SwipeBackActivity;
 
 
@@ -23,6 +24,7 @@ public abstract class BaseActivity extends SwipeBackActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        AutoSize.autoConvertDensityBaseOnHeight(this, 667f);
         setContentView(getViewId());
         initView();
         initData();

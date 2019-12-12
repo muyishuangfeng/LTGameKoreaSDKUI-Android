@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="@dimen/dp_318"
-    android:layout_height="@dimen/dp_168"
+    android:layout_height="@dimen/dp_188"
     android:layout_gravity="center"
     android:gravity="center"
     android:orientation="vertical">
@@ -9,12 +9,12 @@
 
     <LinearLayout
         android:id="@+id/lyt_bind_facebook"
-        android:layout_width="@dimen/dp_150"
+        android:layout_width="@dimen/dp_170"
         android:layout_height="@dimen/dp_28"
         android:layout_below="@+id/txt_title"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/dp_12"
-        android:background="@color/colorFaceBook"
+        android:background="@drawable/btn_blue_8_corner"
         android:gravity="center"
         android:orientation="horizontal">
         <android.support.v7.widget.AppCompatImageView
@@ -22,7 +22,7 @@
             android:layout_height="@dimen/dp_24"
             android:layout_gravity="center_vertical"
             android:padding="@dimen/dp_2"
-            android:src="@drawable/google" />
+            android:src="@drawable/facebook" />
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -37,12 +37,12 @@
 
     <LinearLayout
         android:id="@+id/lyt_bind_google"
-        android:layout_width="@dimen/dp_150"
+        android:layout_width="@dimen/dp_170"
         android:layout_height="@dimen/dp_28"
         android:layout_below="@+id/lyt_bind_facebook"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/dp_8"
-        android:background="@color/colorFaceBook"
+        android:background="@drawable/btn_blue_8_corner"
         android:gravity="center"
         android:orientation="horizontal">
         <android.support.v7.widget.AppCompatImageView
