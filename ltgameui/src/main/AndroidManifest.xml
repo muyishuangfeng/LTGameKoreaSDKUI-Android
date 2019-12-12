@@ -6,12 +6,7 @@
             android:name="com.gentop.ltsdk.ltsdkui.widget.activity.LoginActivity"
             android:theme="@style/CustomTheme_Dialog" />
 
-        <meta-data
-            android:name="design_width_in_dp"
-            android:value="375" />
-        <meta-data
-            android:name="design_height_in_dp"
-            android:value="667" />
+
 
     </application>
 
