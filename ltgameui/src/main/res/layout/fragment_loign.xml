@@ -9,11 +9,11 @@
 
     <LinearLayout
         android:id="@+id/lyt_login_facebook"
-        android:layout_width="@dimen/dp_150"
+        android:layout_width="@dimen/dp_170"
         android:layout_height="@dimen/dp_28"
         android:layout_below="@+id/txt_ways"
         android:layout_centerHorizontal="true"
-        android:background="@color/colorFaceBook"
+        android:background="@drawable/btn_blue_8_corner"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -37,12 +37,12 @@
 
     <LinearLayout
         android:id="@+id/lyt_login_google"
-        android:layout_width="@dimen/dp_150"
+        android:layout_width="@dimen/dp_170"
         android:layout_height="@dimen/dp_28"
         android:layout_below="@+id/lyt_login_facebook"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/dp_8"
-        android:background="@color/colorFaceBook"
+        android:background="@drawable/btn_blue_8_google_corner"
         android:gravity="center"
         android:orientation="horizontal">
 
