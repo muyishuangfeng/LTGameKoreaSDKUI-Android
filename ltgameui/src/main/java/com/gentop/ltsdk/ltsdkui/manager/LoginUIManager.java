@@ -81,6 +81,7 @@ public class LoginUIManager {
                             ResultData resultData = new ResultData();
                             resultData.setLt_uid(PreferencesUtils.getString(activity, Constants.USER_LT_UID));
                             resultData.setLt_uid_token(PreferencesUtils.getString(activity, Constants.USER_LT_UID_TOKEN));
+                            resultData.setApi_token(PreferencesUtils.getString(activity, Constants.USER_API_TOKEN));
                             resultData.setLoginType(PreferencesUtils.getString(activity, ConstantModel.MSG_LOGIN_TYPE));
                             mListener.OnLoginResult(resultData);
                         } else if (result.getCode() == 501) {
