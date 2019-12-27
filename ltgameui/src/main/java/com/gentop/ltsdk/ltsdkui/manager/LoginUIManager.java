@@ -65,7 +65,10 @@ public class LoginUIManager {
                         final String packageID, final boolean mIsLoginOut,
                         final OnResultClickListener listener,
                         final OnReLoginInListener mListener) {
-        if (isLoginStatus(activity)) {
+        if (TextUtils.isEmpty(PreferencesUtils.getString(activity,
+                Constants.USER_LT_UID)) || TextUtils.isEmpty(PreferencesUtils.getString(activity,
+                Constants.USER_LT_UID_TOKEN)) || TextUtils.isEmpty(PreferencesUtils.getString(activity,
+                Constants.USER_BIND_FLAG))) {
             login(activity, mServerTest, mFacebookID, mAgreementUrl, mPrivacyUrl, googleClientID, LTAppID,
                     LTAppKey, adID, packageID, mIsLoginOut, listener);
         } else {
