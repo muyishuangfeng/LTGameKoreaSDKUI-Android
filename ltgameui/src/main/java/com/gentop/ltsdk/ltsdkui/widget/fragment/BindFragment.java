@@ -200,7 +200,7 @@ public class BindFragment extends BaseFragment implements View.OnClickListener {
      * 游客登录
      */
     private void guestLogin() {
-        //pop();
+        pop();
         //if (findFragment(GuestTurnFragment.class) == null) {
         BundleData data = new BundleData();
         data.setAgreementUrl(mAgreementUrl);
