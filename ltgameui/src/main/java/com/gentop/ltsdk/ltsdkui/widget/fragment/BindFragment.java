@@ -201,29 +201,29 @@ public class BindFragment extends BaseFragment implements View.OnClickListener {
      */
     private void guestLogin() {
         //pop();
-        if (findFragment(GuestTurnFragment.class) == null) {
-            BundleData data = new BundleData();
-            data.setAgreementUrl(mAgreementUrl);
-            data.setPrivacyUrl(mPrivacyUrl);
-            data.setLTAppKey(LTAppKey);
-            data.setLTAppID(LTAppID);
-            data.setGoogleClientID(googleClientID);
-            data.setmAdID(mAdID);
-            data.setmPackageID(mPackageID);
-            data.setServerTest(mServerTest);
-            data.setmFacebookID(mFacebookID);
-            data.setmLoginOut(mIsLoginOut);
-            GuestTurnFragment fragment = GuestTurnFragment.newInstance(data);
-            fragment.setOnResultClick(new OnResultClickListener() {
-                @Override
-                public void onResult(ResultData result) {
-                    LoginUIManager.getInstance().setResult(result);
-                }
-            });
-            getProxyActivity().addFragment(fragment,
-                    false,
-                    false);
-        }
+        //if (findFragment(GuestTurnFragment.class) == null) {
+        BundleData data = new BundleData();
+        data.setAgreementUrl(mAgreementUrl);
+        data.setPrivacyUrl(mPrivacyUrl);
+        data.setLTAppKey(LTAppKey);
+        data.setLTAppID(LTAppID);
+        data.setGoogleClientID(googleClientID);
+        data.setmAdID(mAdID);
+        data.setmPackageID(mPackageID);
+        data.setServerTest(mServerTest);
+        data.setmFacebookID(mFacebookID);
+        data.setmLoginOut(mIsLoginOut);
+        GuestTurnFragment fragment = GuestTurnFragment.newInstance(data);
+        fragment.setOnResultClick(new OnResultClickListener() {
+            @Override
+            public void onResult(ResultData result) {
+                LoginUIManager.getInstance().setResult(result);
+            }
+        });
+        getProxyActivity().addFragment(fragment,
+                false,
+                false);
+        //  }
     }
 
 
