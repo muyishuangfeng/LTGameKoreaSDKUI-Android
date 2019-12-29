@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 
 import com.gentop.ltgame.ltgameui.R;
 import com.gentop.ltgamesdk.google.GoogleLoginManager;
+import com.gentop.ltgamesdk.google.OnGoogleSignOutListener;
 import com.gentop.ltgamesdk.google.OnGoogleTokenListener;
 import com.gentop.ltsdk.common.constant.Constants;
 import com.gentop.ltsdk.common.impl.OnLoginSuccessListener;
@@ -101,8 +102,14 @@ public class BindFragment extends BaseFragment implements View.OnClickListener {
             initFaceBook();
         } else if (resID == R.id.lyt_bind_google) {//google
             if (!TextUtils.isEmpty(googleClientID)) {
-                GoogleLoginManager.initGoogle(mActivity,
-                        googleClientID, REQUEST_CODE);
+                GoogleLoginManager.GoogleSingOut(mActivity, googleClientID, new OnGoogleSignOutListener() {
+                    @Override
+                    public void onSignOutSuccess() {
+                        GoogleLoginManager.initGoogle(mActivity,
+                                googleClientID, REQUEST_CODE);
+                    }
+                });
+
             }
         } else if (resID == R.id.img_bind_back) {
             guestLogin();
