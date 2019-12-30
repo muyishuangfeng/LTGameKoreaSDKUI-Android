@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import com.gentop.ltsdk.common.model.BaseEntry;
 import com.gentop.ltsdk.common.model.ResultData;
 import com.gentop.ltsdk.common.util.PreferencesUtils;
 import com.gentop.ltsdk.facebook.FacebookLoginManager;
+import com.gentop.ltsdk.facebook.FacebookUIEventManager;
 import com.gentop.ltsdk.ltsdkui.base.BaseFragment;
 import com.gentop.ltsdk.ltsdkui.impl.OnResultClickListener;
 import com.gentop.ltsdk.ltsdkui.manager.LoginUIManager;
@@ -65,11 +67,6 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
 
         mLytFaceBook = view.findViewById(R.id.lyt_login_facebook);
         mLytFaceBook.setOnClickListener(this);
-
-        if (!TextUtils.isEmpty(PreferencesUtils.getString(mActivity, Constants.USER_BIND_FLAG)) &&
-                TextUtils.equals(PreferencesUtils.getString(mActivity, Constants.USER_BIND_FLAG), "2")) {//绑定过不显示游客
-           mTxtGuest.setVisibility(View.GONE);
-        }
     }
 
     @Override
@@ -107,7 +104,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
             }
         } else if (resID == R.id.txt_visitor) {//游客登录
             if (!TextUtils.isEmpty(PreferencesUtils.getString(mActivity, Constants.USER_GUEST_FLAG)) &&
-                    TextUtils.equals(PreferencesUtils.getString(mActivity, Constants.USER_GUEST_FLAG), "2")) {//游客登录过
+                    TextUtils.equals(PreferencesUtils.getString(mActivity, Constants.USER_GUEST_FLAG), "YES")) {//游客登录过
                 guestTurn();
             } else {
                 guestLogin();
@@ -135,11 +132,17 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                                         mData.setLt_uid_token(result.getData().getLt_uid_token());
                                         mData.setApi_token(result.getData().getApi_token());
                                         mData.setLoginType("Google Login");
+                                        PreferencesUtils.putString(mActivity, Constants.USER_GUEST_FLAG, "NO");
                                         PreferencesUtils.putString(mActivity, ConstantModel.MSG_LOGIN_TYPE, "Google Login");
                                         PreferencesUtils.putString(mActivity, Constants.USER_API_TOKEN, result.getData().getApi_token());
                                         PreferencesUtils.putString(mActivity, Constants.USER_LT_UID, result.getData().getLt_uid());
                                         PreferencesUtils.putString(mActivity, Constants.USER_LT_UID_TOKEN, result.getData().getLt_uid_token());
                                         LoginUIManager.getInstance().setResult(mData);
+                                        if (result.getData().getLt_type().equals("register")) {
+                                            FacebookUIEventManager.register(mActivity, 1);
+                                        }else {
+                                            Log.e("TAG", "gp");
+                                        }
                                         getProxyActivity().finish();
                                     }
                                 }
@@ -157,7 +160,10 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                             loginFailed();
                         }
 
+                        @Override
+                        public void onAlreadyBind() {
 
+                        }
                     });
         }
     }
@@ -167,80 +173,75 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
      * 登录失败
      */
     private void loginFailed() {
-        if (findChildFragment(LoginFailedFragment.class) == null) {
-            BundleData data = new BundleData();
-            data.setAgreementUrl(mAgreementUrl);
-            data.setPrivacyUrl(mPrivacyUrl);
-            data.setLTAppKey(LTAppKey);
-            data.setLTAppID(LTAppID);
-            data.setGoogleClientID(googleClientID);
-            data.setmAdID(mAdID);
-            data.setmPackageID(mPackageID);
-            data.setServerTest(mServerTest);
-            data.setmFacebookID(mFacebookID);
-            data.setmLoginOut(mIsLoginOut);
-            getProxyActivity().addFragment(LoginFailedFragment.newInstance(data),
-                    false,
-                    true);
-        }
+        BundleData data = new BundleData();
+        data.setAgreementUrl(mAgreementUrl);
+        data.setPrivacyUrl(mPrivacyUrl);
+        data.setLTAppKey(LTAppKey);
+        data.setLTAppID(LTAppID);
+        data.setGoogleClientID(googleClientID);
+        data.setmAdID(mAdID);
+        data.setmPackageID(mPackageID);
+        data.setServerTest(mServerTest);
+        data.setmFacebookID(mFacebookID);
+        data.setmLoginOut(mIsLoginOut);
+        data.setBind(false);
+        getProxyActivity().addFragment(LoginFailedFragment.newInstance(data),
+                false,
+                true);
     }
 
     /**
      * 游客登录
      */
     private void guestLogin() {
-        if (findFragment(GuestFragment.class) == null) {
-            BundleData data = new BundleData();
-            data.setAgreementUrl(mAgreementUrl);
-            data.setPrivacyUrl(mPrivacyUrl);
-            data.setLTAppKey(LTAppKey);
-            data.setLTAppID(LTAppID);
-            data.setGoogleClientID(googleClientID);
-            data.setmAdID(mAdID);
-            data.setmPackageID(mPackageID);
-            data.setServerTest(mServerTest);
-            data.setmFacebookID(mFacebookID);
-            data.setmLoginOut(mIsLoginOut);
-            GuestFragment fragment = GuestFragment.newInstance(data);
-            fragment.setOnResultClick(new OnResultClickListener() {
-                @Override
-                public void onResult(ResultData result) {
-                    LoginUIManager.getInstance().setResult(result);
-                }
-            });
-            getProxyActivity().addFragment(fragment,
-                    false,
-                    true);
-        }
+        BundleData data = new BundleData();
+        data.setAgreementUrl(mAgreementUrl);
+        data.setPrivacyUrl(mPrivacyUrl);
+        data.setLTAppKey(LTAppKey);
+        data.setLTAppID(LTAppID);
+        data.setGoogleClientID(googleClientID);
+        data.setmAdID(mAdID);
+        data.setmPackageID(mPackageID);
+        data.setServerTest(mServerTest);
+        data.setmFacebookID(mFacebookID);
+        data.setmLoginOut(mIsLoginOut);
+        GuestFragment fragment = GuestFragment.newInstance(data);
+        fragment.setOnResultClick(new OnResultClickListener() {
+            @Override
+            public void onResult(ResultData result) {
+                LoginUIManager.getInstance().setResult(result);
+            }
+        });
+        getProxyActivity().addFragment(fragment,
+                false,
+                true);
     }
 
     /**
      * 游客转正
      */
     private void guestTurn() {
-        if (findFragment(GuestTurnFragment.class) == null) {
-            BundleData data = new BundleData();
-            data.setAgreementUrl(mAgreementUrl);
-            data.setPrivacyUrl(mPrivacyUrl);
-            data.setLTAppKey(LTAppKey);
-            data.setLTAppID(LTAppID);
-            data.setGoogleClientID(googleClientID);
-            data.setmAdID(mAdID);
-            data.setmPackageID(mPackageID);
-            data.setServerTest(mServerTest);
-            data.setmFacebookID(mFacebookID);
-            data.setmLoginOut(mIsLoginOut);
-            GuestTurnFragment fragment = GuestTurnFragment.newInstance(data);
-            fragment.setOnResultClick(new OnResultClickListener() {
-                @Override
-                public void onResult(ResultData result) {
-                    LoginUIManager.getInstance().setResult(result);
-                }
-            });
-            getProxyActivity().addFragment(fragment,
-                    true,
-                    true);
-        }
+        BundleData data = new BundleData();
+        data.setAgreementUrl(mAgreementUrl);
+        data.setPrivacyUrl(mPrivacyUrl);
+        data.setLTAppKey(LTAppKey);
+        data.setLTAppID(LTAppID);
+        data.setGoogleClientID(googleClientID);
+        data.setmAdID(mAdID);
+        data.setmPackageID(mPackageID);
+        data.setServerTest(mServerTest);
+        data.setmFacebookID(mFacebookID);
+        data.setmLoginOut(mIsLoginOut);
+        GuestTurnFragment fragment = GuestTurnFragment.newInstance(data);
+        fragment.setOnResultClick(new OnResultClickListener() {
+            @Override
+            public void onResult(ResultData result) {
+                LoginUIManager.getInstance().setResult(result);
+            }
+        });
+        getProxyActivity().addFragment(fragment,
+                false,
+                true);
     }
 
 
@@ -264,11 +265,17 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                                         mData.setApi_token(result.getData().getApi_token());
                                         mData.setLt_uid_token(result.getData().getLt_uid_token());
                                         mData.setLoginType("Facebook Login");
+                                        PreferencesUtils.putString(mActivity, Constants.USER_GUEST_FLAG, "NO");
                                         PreferencesUtils.putString(mActivity, ConstantModel.MSG_LOGIN_TYPE, "Facebook Login");
                                         PreferencesUtils.putString(mActivity, Constants.USER_API_TOKEN, result.getData().getApi_token());
                                         PreferencesUtils.putString(mActivity, Constants.USER_LT_UID, result.getData().getLt_uid());
                                         PreferencesUtils.putString(mActivity, Constants.USER_LT_UID_TOKEN, result.getData().getLt_uid_token());
                                         LoginUIManager.getInstance().setResult(mData);
+                                        if (result.getData().getLt_type().equals("register")) {
+                                            FacebookUIEventManager.register(mActivity, 0);
+                                        } else {
+                                            Log.e("TAG", "FB");
+                                        }
                                         getProxyActivity().finish();
                                     }
 
@@ -287,7 +294,10 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                             loginFailed();
                         }
 
+                        @Override
+                        public void onAlreadyBind() {
 
+                        }
                     });
         }
     }

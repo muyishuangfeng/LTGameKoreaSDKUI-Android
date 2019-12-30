@@ -42,7 +42,7 @@
         android:layout_below="@+id/lyt_bind_facebook"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/dp_8"
-        android:background="@drawable/btn_blue_8_corner"
+        android:background="@drawable/btn_blue_8_google_corner"
         android:gravity="center"
         android:orientation="horizontal">
         <android.support.v7.widget.AppCompatImageView

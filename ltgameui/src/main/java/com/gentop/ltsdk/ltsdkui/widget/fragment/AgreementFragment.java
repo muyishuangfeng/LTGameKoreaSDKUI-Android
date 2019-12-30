@@ -19,7 +19,7 @@ import com.gentop.ltsdk.ltsdkui.util.UrlUtils;
 public class AgreementFragment extends BaseFragment implements View.OnClickListener,
         CompoundButton.OnCheckedChangeListener {
 
-    TextView mTxtAgreement,mTxtPrivacy;
+    TextView mTxtAgreement, mTxtPrivacy;
     Button mBtnInto;
     AppCompatCheckBox mCkbAgreement, mCkbPrivacy;
     boolean isAgreement = false;
@@ -139,22 +139,21 @@ public class AgreementFragment extends BaseFragment implements View.OnClickListe
      * 登录
      */
     private void login() {
-        if (findChildFragment(LoginFragment.class) == null) {
-            BundleData data = new BundleData();
-            data.setAgreementUrl(mAgreementUrl);
-            data.setPrivacyUrl(mPrivacyUrl);
-            data.setLTAppKey(LTAppKey);
-            data.setLTAppID(LTAppID);
-            data.setGoogleClientID(googleClientID);
-            data.setmAdID(mAdID);
-            data.setmPackageID(mPackageID);
-            data.setServerTest(mServerTest);
-            data.setmFacebookID(mFacebookID);
-            data.setmLoginOut(mIsLoginOut);
-            getProxyActivity().addFragment(LoginFragment.newInstance(data),
-                    false,
-                    true);
-        }
+        BundleData data = new BundleData();
+        data.setAgreementUrl(mAgreementUrl);
+        data.setPrivacyUrl(mPrivacyUrl);
+        data.setLTAppKey(LTAppKey);
+        data.setLTAppID(LTAppID);
+        data.setGoogleClientID(googleClientID);
+        data.setmAdID(mAdID);
+        data.setmPackageID(mPackageID);
+        data.setServerTest(mServerTest);
+        data.setmFacebookID(mFacebookID);
+        data.setmLoginOut(mIsLoginOut);
+        getProxyActivity().addFragment(LoginFragment.newInstance(data),
+                false,
+                true);
+
     }
 
 }

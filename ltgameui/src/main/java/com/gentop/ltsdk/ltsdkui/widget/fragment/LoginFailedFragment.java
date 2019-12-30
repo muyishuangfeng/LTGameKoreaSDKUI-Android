@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.gentop.ltgame.ltgameui.R;
 import com.gentop.ltsdk.ltsdkui.base.BaseFragment;
@@ -24,8 +25,9 @@ public class LoginFailedFragment extends BaseFragment {
     String mFacebookID;
     boolean mServerTest;
     boolean mIsLoginOut;
-
+    boolean mIsBind;
     ProgressView mPgbLoading;
+    TextView mTxtTips, mTxtContent;
 
     public static LoginFailedFragment newInstance(BundleData data) {
         Bundle args = new Bundle();
@@ -44,6 +46,8 @@ public class LoginFailedFragment extends BaseFragment {
     protected void initView(View view) {
         mLytFailed = view.findViewById(R.id.lyt_login_failed);
         mPgbLoading = view.findViewById(R.id.pgb_loading);
+        mTxtTips = view.findViewById(R.id.txt_login_failed_tips);
+        mTxtContent = view.findViewById(R.id.txt_login_failed_content);
     }
 
     @Override
@@ -63,8 +67,16 @@ public class LoginFailedFragment extends BaseFragment {
                 mFacebookID = mData.getmFacebookID();
                 mServerTest = mData.getServerTest();
                 mIsLoginOut = mData.ismLoginOut();
+                mIsBind = mData.getBind();
                 initData(mPrivacyUrl, mAgreementUrl);
             }
+        }
+        if (mIsBind) {
+            mTxtTips.setText(getResources().getString(R.string.text_bind_failed));
+            mTxtContent.setText(getResources().getString(R.string.text_bind_content));
+        } else {
+            mTxtTips.setText(getResources().getString(R.string.text_login_way));
+            mTxtContent.setText(getResources().getString(R.string.text_login_failed));
         }
     }
 

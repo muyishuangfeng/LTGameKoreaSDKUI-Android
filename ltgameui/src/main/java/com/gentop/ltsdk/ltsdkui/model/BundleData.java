@@ -14,6 +14,7 @@ public class BundleData implements Serializable {
     private String mFacebookID;
     private boolean mLoginOut;
     private boolean mServerTest;
+    private boolean mBind;
 
     public String getPrivacyUrl() {
         return privacyUrl;
@@ -94,5 +95,13 @@ public class BundleData implements Serializable {
 
     public void setServerTest(boolean mServerTest) {
         this.mServerTest = mServerTest;
+    }
+
+    public boolean getBind() {
+        return mBind;
+    }
+
+    public void setBind(boolean mBind) {
+        this.mBind = mBind;
     }
 }

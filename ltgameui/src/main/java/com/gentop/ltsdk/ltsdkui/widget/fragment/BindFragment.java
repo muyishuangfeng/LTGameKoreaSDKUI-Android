@@ -138,8 +138,8 @@ public class BindFragment extends BaseFragment implements View.OnClickListener {
                                                 mData.setLt_uid_token(result.getData().getLt_uid_token());
                                                 mData.setApi_token(result.getData().getApi_token());
                                                 mData.setLoginType("Google Login");
+                                                PreferencesUtils.putString(mActivity, Constants.USER_GUEST_FLAG, "NO");
                                                 PreferencesUtils.putString(mActivity, ConstantModel.MSG_LOGIN_TYPE, "Google Login");
-                                                PreferencesUtils.putString(mActivity, Constants.USER_BIND_FLAG, "2");
                                                 PreferencesUtils.putString(mActivity, Constants.USER_API_TOKEN, result.getData().getApi_token());
                                                 PreferencesUtils.putString(mActivity, Constants.USER_LT_UID, result.getData().getLt_uid());
                                                 PreferencesUtils.putString(mActivity, Constants.USER_LT_UID_TOKEN, result.getData().getLt_uid_token());
@@ -161,6 +161,11 @@ public class BindFragment extends BaseFragment implements View.OnClickListener {
                                 public void onParameterError(String result) {
 
                                 }
+
+                                @Override
+                                public void onAlreadyBind() {
+                                    loginAlreadyBind();
+                                }
                             });
                         }
 
@@ -178,30 +183,51 @@ public class BindFragment extends BaseFragment implements View.OnClickListener {
      * 登录失败
      */
     private void loginFailed() {
-        if (findChildFragment(LoginFailedFragment.class) == null) {
-            BundleData data = new BundleData();
-            data.setAgreementUrl(mAgreementUrl);
-            data.setPrivacyUrl(mPrivacyUrl);
-            data.setLTAppKey(LTAppKey);
-            data.setLTAppID(LTAppID);
-            data.setGoogleClientID(googleClientID);
-            data.setmAdID(mAdID);
-            data.setmPackageID(mPackageID);
-            data.setServerTest(mServerTest);
-            data.setmFacebookID(mFacebookID);
-            data.setmLoginOut(mIsLoginOut);
-            getProxyActivity().addFragment(LoginFailedFragment.newInstance(data),
-                    false,
-                    true);
-        }
+        BundleData data = new BundleData();
+        data.setAgreementUrl(mAgreementUrl);
+        data.setPrivacyUrl(mPrivacyUrl);
+        data.setLTAppKey(LTAppKey);
+        data.setLTAppID(LTAppID);
+        data.setGoogleClientID(googleClientID);
+        data.setmAdID(mAdID);
+        data.setmPackageID(mPackageID);
+        data.setServerTest(mServerTest);
+        data.setmFacebookID(mFacebookID);
+        data.setmLoginOut(mIsLoginOut);
+        data.setBind(false);
+        getProxyActivity().addFragment(LoginFailedFragment.newInstance(data),
+                false,
+                true);
+
+    }
+
+    /**
+     * 已经绑定
+     */
+    private void loginAlreadyBind() {
+        BundleData data = new BundleData();
+        data.setAgreementUrl(mAgreementUrl);
+        data.setPrivacyUrl(mPrivacyUrl);
+        data.setLTAppKey(LTAppKey);
+        data.setLTAppID(LTAppID);
+        data.setGoogleClientID(googleClientID);
+        data.setmAdID(mAdID);
+        data.setmPackageID(mPackageID);
+        data.setServerTest(mServerTest);
+        data.setmFacebookID(mFacebookID);
+        data.setmLoginOut(mIsLoginOut);
+        data.setBind(true);
+        getProxyActivity().addFragment(LoginFailedFragment.newInstance(data),
+                false,
+                true);
+
+
     }
 
     /**
      * 游客登录
      */
     private void guestLogin() {
-        pop();
-        //if (findFragment(GuestTurnFragment.class) == null) {
         BundleData data = new BundleData();
         data.setAgreementUrl(mAgreementUrl);
         data.setPrivacyUrl(mPrivacyUrl);
@@ -222,8 +248,8 @@ public class BindFragment extends BaseFragment implements View.OnClickListener {
         });
         getProxyActivity().addFragment(fragment,
                 false,
-                false);
-        //  }
+                true);
+
     }
 
 
@@ -250,8 +276,8 @@ public class BindFragment extends BaseFragment implements View.OnClickListener {
                                                         mData.setApi_token(result.getData().getApi_token());
                                                         mData.setLt_uid_token(result.getData().getLt_uid_token());
                                                         mData.setLoginType("Facebook Login");
+                                                        PreferencesUtils.putString(mActivity, Constants.USER_GUEST_FLAG, "NO");
                                                         PreferencesUtils.putString(mActivity, ConstantModel.MSG_LOGIN_TYPE, "Facebook Login");
-                                                        PreferencesUtils.putString(mActivity, Constants.USER_BIND_FLAG, "2");
                                                         PreferencesUtils.putString(mActivity, Constants.USER_API_TOKEN, result.getData().getApi_token());
                                                         PreferencesUtils.putString(mActivity, Constants.USER_LT_UID, result.getData().getLt_uid());
                                                         PreferencesUtils.putString(mActivity, Constants.USER_LT_UID_TOKEN, result.getData().getLt_uid_token());
@@ -272,6 +298,11 @@ public class BindFragment extends BaseFragment implements View.OnClickListener {
                                         @Override
                                         public void onParameterError(String result) {
 
+                                        }
+
+                                        @Override
+                                        public void onAlreadyBind() {
+                                            loginAlreadyBind();
                                         }
                                     });
                         }

@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 
-
 import com.gentop.ltgamesdk.google.GoogleLoginManager;
 import com.gentop.ltgamesdk.google.OnGoogleSignOutListener;
 import com.gentop.ltsdk.common.constant.Constants;
@@ -65,50 +64,59 @@ public class LoginUIManager {
                         final String packageID, final boolean mIsLoginOut,
                         final OnResultClickListener listener,
                         final OnReLoginInListener mListener) {
-        if (TextUtils.isEmpty(PreferencesUtils.getString(activity,
-                Constants.USER_LT_UID)) || TextUtils.isEmpty(PreferencesUtils.getString(activity,
-                Constants.USER_LT_UID_TOKEN)) || TextUtils.isEmpty(PreferencesUtils.getString(activity,
-                Constants.USER_BIND_FLAG))) {
+        if (!TextUtils.isEmpty(PreferencesUtils.getString(activity,
+                Constants.USER_LT_UID)) || !TextUtils.isEmpty(PreferencesUtils.getString(activity,
+                Constants.USER_LT_UID_TOKEN))) {
+            if (!TextUtils.isEmpty(PreferencesUtils.getString(activity,
+                    Constants.USER_GUEST_FLAG))) {
+                if (PreferencesUtils.getString(activity,
+                        Constants.USER_GUEST_FLAG).equals("YES")) {//是否是游客
+                    login(activity, mServerTest, mFacebookID, mAgreementUrl, mPrivacyUrl, googleClientID, LTAppID,
+                            LTAppKey, adID, packageID, mIsLoginOut, listener);
+                } else {
+                    Map<String, Object> params = new WeakHashMap<>();
+                    params.put("lt_uid", PreferencesUtils.getString(activity, Constants.USER_LT_UID));
+                    params.put("lt_uid_token", PreferencesUtils.getString(activity, Constants.USER_LT_UID_TOKEN));
+                    params.put("platform", 2);
+                    params.put("adid", adID);
+                    params.put("platform_id", packageID);
+                    LoginResultManager.autoLoginCheck(mServerTest, LTAppID, LTAppKey, params, new OnAutoLoginCheckListener() {
+                        @Override
+                        public void onCheckSuccess(BaseEntry result) {
+                            if (result != null) {
+                                if (result.getCode() == 200) {
+                                    ResultData resultData = new ResultData();
+                                    resultData.setLt_uid(PreferencesUtils.getString(activity, Constants.USER_LT_UID));
+                                    resultData.setLt_uid_token(PreferencesUtils.getString(activity, Constants.USER_LT_UID_TOKEN));
+                                    resultData.setApi_token(PreferencesUtils.getString(activity, Constants.USER_API_TOKEN));
+                                    resultData.setLoginType(PreferencesUtils.getString(activity, ConstantModel.MSG_LOGIN_TYPE));
+                                    mListener.OnLoginResult(resultData);
+                                } else if (result.getCode() == 501) {
+                                    GeneralDialogUtil.showActionDialog(activity, 501);
+                                } else if (result.getCode() == 502) {
+                                    GeneralDialogUtil.showActionDialog(activity, 502);
+                                } else if (result.getCode() == 503) {
+                                    GeneralDialogUtil.showActionDialog(activity, 503);
+                                } else if (result.getCode() == 400) {
+                                    loginOut(activity, mServerTest, mFacebookID, mAgreementUrl, mPrivacyUrl,
+                                            googleClientID, LTAppID, LTAppKey, adID, packageID, mIsLoginOut,
+                                            listener);
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCheckFailed(Throwable ex) {
+                            ResultData resultData = new ResultData();
+                            resultData.setErrorMsg(ex.getMessage());
+                            mListener.OnLoginResult(resultData);
+                        }
+                    });
+                }
+            }
+        }else {
             login(activity, mServerTest, mFacebookID, mAgreementUrl, mPrivacyUrl, googleClientID, LTAppID,
                     LTAppKey, adID, packageID, mIsLoginOut, listener);
-        } else {
-            Map<String, Object> params = new WeakHashMap<>();
-            params.put("lt_uid", PreferencesUtils.getString(activity, Constants.USER_LT_UID));
-            params.put("lt_uid_token", PreferencesUtils.getString(activity, Constants.USER_LT_UID_TOKEN));
-            params.put("platform_id", packageID);
-            LoginResultManager.autoLoginCheck(mServerTest, LTAppID, LTAppKey, params, new OnAutoLoginCheckListener() {
-                @Override
-                public void onCheckSuccess(BaseEntry result) {
-                    if (result != null) {
-                        if (result.getCode() == 200) {
-                            ResultData resultData = new ResultData();
-                            resultData.setLt_uid(PreferencesUtils.getString(activity, Constants.USER_LT_UID));
-                            resultData.setLt_uid_token(PreferencesUtils.getString(activity, Constants.USER_LT_UID_TOKEN));
-                            resultData.setApi_token(PreferencesUtils.getString(activity, Constants.USER_API_TOKEN));
-                            resultData.setLoginType(PreferencesUtils.getString(activity, ConstantModel.MSG_LOGIN_TYPE));
-                            mListener.OnLoginResult(resultData);
-                        } else if (result.getCode() == 501) {
-                            GeneralDialogUtil.showActionDialog(activity, 501);
-                        } else if (result.getCode() == 502) {
-                            GeneralDialogUtil.showActionDialog(activity, 502);
-                        } else if (result.getCode() == 503) {
-                            GeneralDialogUtil.showActionDialog(activity, 503);
-                        } else if (result.getCode() == 400) {
-                            loginOut(activity, mServerTest, mFacebookID, mAgreementUrl, mPrivacyUrl,
-                                    googleClientID, LTAppID, LTAppKey, adID, packageID, mIsLoginOut,
-                                    listener);
-                        }
-                    }
-                }
-
-                @Override
-                public void onCheckFailed(Throwable ex) {
-                    ResultData resultData = new ResultData();
-                    resultData.setErrorMsg(ex.getMessage());
-                    mListener.OnLoginResult(resultData);
-                }
-            });
-
         }
     }
 

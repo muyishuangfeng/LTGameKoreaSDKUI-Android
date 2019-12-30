@@ -34,4 +34,6 @@
     <string name="text_guest_bind">Bind account</string>
     <string name="text_guest_switch">Switch account</string>
     <string name="text_bind">Please bind your character with below accounts</string>
+    <string name="text_bind_failed">This account is already linked, please use another account to bind.</string>
+    <string name="text_bind_content">Bind failed, please try again</string>
 </resources>
