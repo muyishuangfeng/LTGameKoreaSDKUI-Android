@@ -103,8 +103,8 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                         googleClientID, REQUEST_CODE);
             }
         } else if (resID == R.id.txt_visitor) {//游客登录
-            if (!TextUtils.isEmpty(PreferencesUtils.getString(mActivity, Constants.USER_GUEST_FLAG)) &&
-                    TextUtils.equals(PreferencesUtils.getString(mActivity, Constants.USER_GUEST_FLAG), "YES")) {//游客登录过
+            if (!TextUtils.isEmpty(PreferencesUtils.getString(mActivity, Constants.USER_BIND_FLAG)) &&
+                    TextUtils.equals(PreferencesUtils.getString(mActivity, Constants.USER_BIND_FLAG), "YES")) {//游客登录过
                 guestTurn();
             } else {
                 guestLogin();

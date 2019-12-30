@@ -118,6 +118,7 @@ public class GuestFragment extends BaseFragment implements View.OnClickListener 
                                 loginEnd();
                                 PreferencesUtils.putString(mActivity, ConstantModel.MSG_LOGIN_TYPE, "Guest Login");
                                 PreferencesUtils.putString(mActivity, Constants.USER_GUEST_FLAG, "YES");
+                                PreferencesUtils.putString(mActivity, Constants.USER_BIND_FLAG, "YES");
                                 PreferencesUtils.putString(mActivity, Constants.USER_API_TOKEN, result.getData().getApi_token());
                                 PreferencesUtils.putString(mActivity, Constants.USER_LT_UID, result.getData().getLt_uid());
                                 PreferencesUtils.putString(mActivity, Constants.USER_LT_UID_TOKEN, result.getData().getLt_uid_token());
