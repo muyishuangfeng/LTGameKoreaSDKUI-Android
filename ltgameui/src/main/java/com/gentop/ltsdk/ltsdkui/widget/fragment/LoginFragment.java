@@ -140,8 +140,6 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                                         LoginUIManager.getInstance().setResult(mData);
                                         if (result.getData().getLt_type().equals("register")) {
                                             FacebookUIEventManager.register(mActivity, 1);
-                                        }else {
-                                            Log.e("TAG", "gp");
                                         }
                                         getProxyActivity().finish();
                                     }
@@ -273,8 +271,6 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                                         LoginUIManager.getInstance().setResult(mData);
                                         if (result.getData().getLt_type().equals("register")) {
                                             FacebookUIEventManager.register(mActivity, 0);
-                                        } else {
-                                            Log.e("TAG", "FB");
                                         }
                                         getProxyActivity().finish();
                                     }
