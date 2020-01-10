@@ -53,9 +53,7 @@ public class LoginActivity extends BaseAppActivity {
         data.setServerTest(mServerTest);
         data.setmFacebookID(mFacebookID);
         data.setmLoginOut(mIsLoginOut);
-        if (!TextUtils.isEmpty(mFacebookID)) {
-            FacebookUIEventManager.getInstance().start(this, mFacebookID);
-        }
+        FacebookUIEventManager.getInstance().start(this, mFacebookID);
 
         if (!TextUtils.isEmpty(mAgreementUrl) &&
                 !TextUtils.isEmpty(mPrivacyUrl)) {
