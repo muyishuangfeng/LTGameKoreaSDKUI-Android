@@ -139,7 +139,8 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                                         PreferencesUtils.putString(mActivity, Constants.USER_LT_UID_TOKEN, result.getData().getLt_uid_token());
                                         LoginUIManager.getInstance().setResult(mData);
                                         if (result.getData().getLt_type().equals("register")) {
-                                            FacebookUIEventManager.register(mActivity, 1);
+
+                                            FacebookUIEventManager.getInstance().register(mActivity, 1);
                                         }
                                         getProxyActivity().finish();
                                     }
@@ -270,7 +271,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                                         PreferencesUtils.putString(mActivity, Constants.USER_LT_UID_TOKEN, result.getData().getLt_uid_token());
                                         LoginUIManager.getInstance().setResult(mData);
                                         if (result.getData().getLt_type().equals("register")) {
-                                            FacebookUIEventManager.register(mActivity, 0);
+                                            FacebookUIEventManager.getInstance().register(mActivity, 0);
                                         }
                                         getProxyActivity().finish();
                                     }

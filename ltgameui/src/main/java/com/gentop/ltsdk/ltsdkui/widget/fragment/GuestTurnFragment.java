@@ -113,7 +113,7 @@ public class GuestTurnFragment extends BaseFragment implements View.OnClickListe
                                 PreferencesUtils.putString(mActivity, Constants.USER_LT_UID_TOKEN, result.getData().getLt_uid_token());
                                 LoginUIManager.getInstance().setResult(mData);
                                 if (result.getData().getLt_type().equals("register")){
-                                    FacebookUIEventManager.register(mActivity, 2);
+                                    FacebookUIEventManager.getInstance().register(mActivity, 2);
                                 }
                                 getProxyActivity().finish();
                             }

@@ -8,6 +8,7 @@ import com.gentop.ltgame.ltgameui.R;
 import com.gentop.ltsdk.common.constant.Constants;
 import com.gentop.ltsdk.common.model.ResultData;
 import com.gentop.ltsdk.common.util.PreferencesUtils;
+import com.gentop.ltsdk.facebook.FacebookUIEventManager;
 import com.gentop.ltsdk.ltsdkui.base.BaseAppActivity;
 import com.gentop.ltsdk.ltsdkui.impl.OnResultClickListener;
 import com.gentop.ltsdk.ltsdkui.manager.LoginUIManager;
@@ -52,6 +53,9 @@ public class LoginActivity extends BaseAppActivity {
         data.setServerTest(mServerTest);
         data.setmFacebookID(mFacebookID);
         data.setmLoginOut(mIsLoginOut);
+        if (!TextUtils.isEmpty(mFacebookID)) {
+            FacebookUIEventManager.getInstance().start(this, mFacebookID);
+        }
 
         if (!TextUtils.isEmpty(mAgreementUrl) &&
                 !TextUtils.isEmpty(mPrivacyUrl)) {
